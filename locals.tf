@@ -1,4 +1,4 @@
 locals {
-  project = "contact-form"
-  location    = "japaneast"
+  project  = "contact-form"
+  location = "japaneast"
 }
