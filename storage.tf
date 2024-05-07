@@ -8,6 +8,10 @@ resource "azurerm_storage_account" "storage" {
     index_document = "index.html"
     error_404_document = "error.html"
   }
+   custom_domain {
+    name         = "www.forpoc.com"  # ここにカスタムドメイン名を指定します
+    use_subdomain = false          # サブドメインを使用する場合は true を指定します
+  }
 }
 
 resource "azurerm_storage_blob" "html" {
