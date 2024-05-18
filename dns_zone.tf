@@ -9,5 +9,5 @@ resource "azurerm_dns_cname_record" "cname" {
   zone_name           = azurerm_dns_zone.dns.name
   resource_group_name = azurerm_resource_group.rg.name
   ttl                 = 3600
-  record              = "forstaticfile.z11.web.core.windows.net"
+  record              = "contact-form-endpoint.azureedge.net"
 }
