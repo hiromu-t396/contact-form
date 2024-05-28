@@ -1,5 +1,6 @@
 terraform {
   required_version = "1.8.0"
+  # tfstate用のリソースグループ、ストレージアカウントは手動で作成
   backend "azurerm" {
     resource_group_name  = "terraform"
     storage_account_name = "contactformfortfstate"
@@ -18,4 +19,3 @@ terraform {
 provider "azurerm" {
   features {}
 }
-

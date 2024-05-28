@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせフォーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="heading">お問い合わせフォーム</div>
+    <form action="https://contact-form-functions.azurewebsites.net/api/contact-form?" method="post">
+      <div class="form-field">
+        <label for="name">名前 <span>*</span></label>
+        <input type="text" id="name" name="name" class="input-field" required>
+      </div>
+      <div class="form-field">
+        <label for="email">メールアドレス <span>*</span></label>
+        <input type="email" id="email" name="email" class="input-field" required>
+      </div>
+      <div class="form-field">
+        <label>電話番号</label>
+        <input type="tel" id="tel1" name="tel1" class="tel-field" maxlength="4"> -
+        <input type="tel" id="tel2" name="tel2" class="tel-field" maxlength="4"> -
+        <input type="tel" id="tel3" name="tel3" class="tel-field" maxlength="10">
+      </div>
+      <div class="form-field">
+        <label for="category">カテゴリ</label>
+        <select id="category" name="category" class="select-field">
+          <option value="General Question">一般的なお問い合わせ</option>
+          <option value="Advertise">広告関連のお問い合わせ</option>
+          <option value="Partnership">事業提携のお問い合わせ</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">本文 <span>*</span></label>
+        <textarea id="message" name="message" class="textarea-field" required></textarea>
+      </div>
+      <div class="form-field">
+        <button type="submit" class="submit-button">送信</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

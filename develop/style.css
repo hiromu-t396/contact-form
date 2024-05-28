@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="tel"],
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-field input[type="tel"] {
+  width: calc(32% - 10px);
+}
+
+.form-field input[type="tel"]:nth-child(2) {
+  margin: 0 10px;
+}
+
+.form-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15.1 7.6L10 12.7l-5.1-5.1C4.7 7.1 4.4 7 4 7s-0.7 0.1-1 0.4c-0.6 0.6-0.6 1.6 0 2.1l6 6c0.3 0.3 0.7 0.4 1 0.4s0.7-0.1 1-0.4l6-6c0.6-0.5 0.6-1.5 0-2.1C15.7 7 15.4 7.1 15.1 7.6z"/></svg>') no-repeat right 10px center;
+  background-size: 16px 16px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FF8500;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #EA7B00;
+}
