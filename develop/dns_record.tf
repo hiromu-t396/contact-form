@@ -1,9 +1,8 @@
 # サブドメインの切り出し
 resource "azurerm_dns_cname_record" "cname" {
   name                = "www"
-  zone_name           = azurerm_dns_zone.dns.name
-  resource_group_name = azurerm_resource_group.rg.name
+  zone_name           = data.terraform_remote_state.root.outputs.azurerm_dns_zone
+  resource_group_name = data.terraform_remote_state.root.outputs.resource_group_name
   ttl                 = 3600
-#   record              = "contact-form-endpoint.azureedge.net"
-  record = "${data.terraform_remote_state.root.outputs.azurerm_cdn_endpoint.endpoint.name}.azureedge.net"
+  record              = "contact-form-endpoint.azureedge.net"
 }

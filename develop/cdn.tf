@@ -1,7 +1,7 @@
 resource "azurerm_cdn_profile" "cdn" {
   name                = "forpoc"
   location            = "Global"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = data.terraform_remote_state.root.outputs.resource_group_name
   sku                 = "Standard_Microsoft"
 }
 
@@ -9,7 +9,7 @@ resource "azurerm_cdn_endpoint" "endpoint" {
   name                = "${local.project_name}-endpoint"
   profile_name        = azurerm_cdn_profile.cdn.name
   location            = "Global"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = data.terraform_remote_state.root.outputs.resource_group_name
   is_http_allowed     = "false"
   origin_path         = "/web"
   origin_host_header  = azurerm_storage_account.storage_account.primary_blob_host
@@ -35,7 +35,7 @@ resource "azurerm_cdn_endpoint" "endpoint" {
 resource "azurerm_cdn_endpoint_custom_domain" "cdn_custom_domain" {
   name            = "test"
   cdn_endpoint_id = azurerm_cdn_endpoint.endpoint.id
-  host_name       = "${azurerm_dns_cname_record.cname.name}.${azurerm_dns_zone.dns.name}"
+  host_name       = "${azurerm_dns_cname_record.cname.name}.${data.terraform_remote_state.root.outputs.azurerm_dns_zone}"
   cdn_managed_https {
     certificate_type = "Dedicated"
     protocol_type    = "ServerNameIndication"

@@ -1,15 +1,15 @@
 resource "azurerm_service_plan" "aps" {
   name                = "functions-aps"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = local.location
+  resource_group_name = data.terraform_remote_state.root.outputs.resource_group_name
   os_type             = "Windows"
   sku_name            = "B1"
 }
 
 resource "azurerm_windows_function_app" "functions" {
   name                = "${local.project_name}-functions"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = local.location
+  resource_group_name = data.terraform_remote_state.root.outputs.resource_group_name
   service_plan_id     = azurerm_service_plan.aps.id
 
   storage_account_name       = azurerm_storage_account.functions.name

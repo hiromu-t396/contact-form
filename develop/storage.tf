@@ -1,8 +1,8 @@
 # 静的ファイル保管用
 resource "azurerm_storage_account" "storage_account" {
   name                     = "forpoc"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
+  resource_group_name      = data.terraform_remote_state.root.outputs.resource_group_name
+  location                 = local.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
@@ -30,9 +30,9 @@ resource "azurerm_storage_blob" "css" {
 
 # Azure Functions用
 resource "azurerm_storage_account" "functions" {
-  name                     = "forpocgroupad9c"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
+  name                     = replace("${local.env}${local.project_name}", "-", "")
+  resource_group_name      = data.terraform_remote_state.root.outputs.resource_group_name
+  location                 = local.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
