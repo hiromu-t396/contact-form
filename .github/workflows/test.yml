@@ -1,28 +1,32 @@
 name: Test Workflow
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  simple-test:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Start Job
-        run: echo "Starting job..."
+      - uses: actions/checkout@v3
 
-      - name: First Task
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
         run: |
-          echo "Running first task"
-          sleep 10
-          echo "First task completed"
+          echo "Running test..."
+          sleep 30
+          echo "Test completed!"
 
-      - name: Second Task
+      - name: Build
         run: |
-          echo "Running second task"
-          sleep 5
-          echo "Second task completed"
-
-      - name: Finish Job
-        run: echo "Job completed successfully!"
+          echo "Starting build..."
+          sleep 20
+          echo "Build completed!"
